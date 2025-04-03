@@ -90,6 +90,7 @@ def handle_poke_sel(event):
     image = image.resize((400, 200))
     img = ImageTk.PhotoImage(image)
     lbl_image.config(image=img)
+    set_desktop_btn.state(['!disabled'])
     return
 
 def set_desktop():
@@ -113,5 +114,8 @@ cbox_img_sel = ttk.Combobox(frm_btm, values=image_list, state='readonly')
 cbox_img_sel.grid(row=0,column=0)
 cbox_img_sel.bind('<<ComboboxSelected>>', handle_poke_sel)
 cbox_img_sel.set('Select a Pokemon')
+
+set_desktop_btn = ttk.Button(frm_btm, text="Set Desktop", command=set_desktop, state=DISABLED)
+set_desktop_btn.grid(row=1,column=0, pady=10)
 
 root.mainloop()
